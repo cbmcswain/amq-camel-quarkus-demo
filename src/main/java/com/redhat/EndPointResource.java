@@ -17,7 +17,7 @@ public class EndPointResource {
     @Path("/send")
     @Produces()
     public String send() {
-        String requestBody = producer.requestBody("direct:amq", "danny-demo", String.class);
+        String requestBody = producer.requestBody("direct:amq", "Demo Message Hello", String.class);
         return requestBody;
     }
 

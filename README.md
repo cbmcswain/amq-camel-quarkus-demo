@@ -3,6 +3,12 @@
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Application requirements
+To properly exercise this application demo a AMQ Broker is requried. A docker container with an Artemis broker running can be spun up using the following command:
+```shell script
+docker run -it --rm -p 8161:8161 -p 61616:61616 -p 5672:5672 -e AMQ_USER=quarkus -e AMQ_PASSWORD=quarkus quay.io/artemiscloud/activemq-artemis-broker:0.1.4
+
+```
 
 ## Running the application in dev mode
 
