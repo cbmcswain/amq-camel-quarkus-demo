@@ -1,10 +1,11 @@
 package com.redhat;
 
-import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-
+import javax.ws.rs.core.MediaType;
 import org.apache.camel.ProducerTemplate;
 
 @Path("/api")
@@ -15,18 +16,11 @@ public class EndPointResource {
 
     @POST
     @Path("/send")
-    @Produces()
-    public String send() {
-        String requestBody = producer.requestBody("direct:amq", "Demo Message Hello", String.class);
-        return requestBody;
-    }
-
-    @POST
-    @Path("/receive")
-    @Produces()
-    public String receive() {
-        return "";
-
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String send(String body) {
+        producer.requestBody("direct:amq", body , String.class);
+        return "Sending message " + body;
     }
 
 }

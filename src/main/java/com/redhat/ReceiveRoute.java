@@ -8,7 +8,6 @@ public class ReceiveRoute extends RouteBuilder{
     public void configure(){
         from("amqp:queue:demo-queue")
         .setExchangePattern(ExchangePattern.InOnly)
-        .log("receiving message: " + "${body}");
-    }
-    
+        .log("Message Received: " + "${body}");
+    }   
 }

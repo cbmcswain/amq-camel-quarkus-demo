@@ -7,7 +7,7 @@ public class SendRoute extends RouteBuilder{
     public void configure(){
         from("direct:amq")
             .setExchangePattern(ExchangePattern.InOnly)
-            .log("sending message: " + "${body}")
+            .log("Sending Message: " + "${body}")
             .to("amqp:queue:demo-queue");
     }
     
